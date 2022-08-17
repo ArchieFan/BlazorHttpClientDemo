@@ -1,0 +1,37 @@
+﻿@page "/coinsdata"
+
+<h3>CoinsData</h3>
+
+@if (string.IsNullOrWhiteSpace(errorString) == false) {
+    <div class="h2"> @errorString </div>
+}
+else if (coinslist is null) { 
+    <div class="h4">Loading ... </div>
+} else {
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Asset</th>
+                <th>AssetLong</th>
+                <th>SystemProtocol</th>
+                <th>WithdrawTxFee</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in coinslist.Result!)
+            {
+                <tr>
+                    <td> @item.Asset </td>
+                    <td> @item.AssetLong </td>
+                    <td> @item.SystemProtocol </td>
+                    <td> @item.WithdrawTxFee </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+
+@code {
+    
+}
